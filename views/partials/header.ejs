@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LET'S RENT</title>
+</head>
+<body>
+    <header style="position: sticky; top: 0; background-color: #ffffff; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <h1 style="margin: 0; padding: 10px 20px; font-size: 24px; text-align: center; border-bottom: 1px solid #e0e0e0;">LETS RENT</h1>
+        <nav style="display: flex; justify-content: center; padding: 10px 0; background-color: #f2f2f2;">
+            <a href="/dashboard" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">Home</a>
+            <% if (!user) { %>
+                <a href="/auth/login" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">Login</a>
+                <a href="/auth/register" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">Register</a>
+            <% } else { %>
+                <a href="/rooms/upload" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">Upload Room</a>
+                <a href="/rooms/view" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">View Rooms</a>
+                <a href="/rooms/my-rooms" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">My Rooms</a>
+                <a href="/auth/logout" style="text-decoration: none; color: #333333; padding: 10px 20px; margin: 0 5px;">Logout</a>
+            <% } %>
+        </nav>
+    </header>
+</body>
+</html>
