@@ -13,7 +13,7 @@ cloudinary.config({
     api_key: '231666164798457', 
     api_secret: 'o1_Nfqh2iNM29EN6-qBBCjNtX4Y'
   });
-
+  
 
 
 // Upload room details
