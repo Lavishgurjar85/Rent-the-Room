@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+<main style="display: flex; gap: 50px; padding: 20px; max-width: 1200px; margin: 0 auto;">
+    <aside style="flex: 0 0 300px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); position: sticky; top: 120px; max-height: 500px;">
+        <h2 style="font-size: 24px; margin-bottom: 20px;">Search Filters</h2>
+        <form action="/rooms/view" method="get" style="display: flex; flex-direction: column; gap: 15px;">
+            <div>
+                <label for="address" style="display: block; margin-bottom: 5px;">Address:</label>
+                <input type="text" id="address" name="address" value="<%= address || '' %>" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div>
+                <label for="minRent" style="display: block; margin-bottom: 5px;">Min Rent:</label>
+                <input type="number" id="minRent" name="minRent" value="<%= minRent || '' %>" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div>
+                <label for="maxRent" style="display: block; margin-bottom: 5px;">Max Rent:</label>
+                <input type="number" id="maxRent" name="maxRent" value="<%= maxRent || '' %>" style="padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <button type="submit" style="padding: 10px; background-color: #007bff; color: #fff; border: none; cursor: pointer; width: 100%; border-radius: 4px;">Search</button>
+        </form>
+    </aside>
+    <div style="flex: 1;  overflow-y: auto;">
+        <!-- Set overflow-y: auto; on the container to enable scrolling within the main content area -->
+        <h2 style="font-size: 28px; margin-bottom: 20px;">Available Rooms</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <% rooms.forEach(room => { %>
+                <div style="display: flex; border: 1px solid #ccc; padding: 20px; width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                    <div style="flex: 1;">
+                        <h3 style="font-size: 24px; margin-bottom: 10px;">Title: <%= room.title %></h3>
+                        <p style="font-size: 16px; margin-bottom: 10px;">Description: <%= room.description %></p>
+                        <p style="font-size: 16px; margin-bottom: 10px;">Address: <%= room.address %></p>
+                        <p style="font-size: 16px; margin-bottom: 10px;">Rent: $<%= room.rent %></p>
+                    </div>
+                    <% if (room.photo) { %>
+                        <div style="flex: 1; display: flex; justify-content: flex-end;">
+                            <img src="<%= room.photo %>" alt="Room photo" style="max-width: 120%; height: 325px; max-height: 400px; border-radius: 8px; width: 375;">
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer') %>

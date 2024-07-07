@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+<main style="max-width: 600px; margin: 0 auto; padding: 20px;">
+    <h2 style="font-size: 28px; margin-bottom: 20px; padding-left: 150px">Upload Room Details</h2>
+    <form action="/rooms/upload" method="post" enctype="multipart/form-data" style="border: 1px solid #ccc; padding: 20px; width:450px; background-color: #f9f9f9;">
+        <div style="margin-bottom: 10px;">
+            <label for="title" style="display: block; margin-bottom: 5px;">House/Room Name:</label>
+            <input type="text" id="title" name="title" required style="width: 95%; padding: 8px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="description" style="display: block; margin-bottom: 5px;" >Description:</label>
+            <textarea id="description" name="description" required style="width: 95%; padding: 8px;" rows="10"></textarea>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="address" style="display: block; margin-bottom: 5px;" >Address:</label>
+            <input type="text" id="address" name="address" required style="width: 95%; padding: 8px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="rent" style="display: block; margin-bottom: 5px;">Rent:</label>
+            <input type="number" id="rent" name="rent" required style="width: 95%; padding: 8px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="photo" style="display: block; margin-bottom: 5px;">Photo:</label>
+            <input type="file" id="photo" name="photo" style="width: 95%; padding: 8px;">
+        </div>
+        <button type="submit" style="background-color: #007bff; color: #fff; border: none; padding: 10px; cursor: pointer;">Upload</button>
+    </form>
+</main>
+<%- include('partials/footer') %>

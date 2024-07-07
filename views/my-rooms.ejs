@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+<main style="max-width: 800px; margin: 0 auto; padding: 20px; text-align: center;">
+    <h2 style="font-size: 28px; margin-bottom: 20px;">My Rooms</h2>
+    <div style="display: grid; gap: 20px;">
+        <% rooms.forEach(room => { %>
+            <div style="border: 1px solid #ccc; padding: 10px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start;">
+                <div>
+                    <h3 style="font-size: 20px; margin-bottom: 10px;">Title: <%= room.title %></h3>
+                    <p style="margin-bottom: 10px;">Description: <%= room.description %></p>
+                    <p style="margin-bottom: 10px;">Address: <%= room.address %></p>
+                    <p style="margin-bottom: 10px;">Rent: <%= room.rent %></p>
+                </div>
+                <% if (room.photo) { %>
+                    <img src="<%= room.photo %>" alt="Room photo" style="max-width: 80%; height: 250px; margin-bottom: 10px; margin-left: 100px;">
+                <% } %>
+
+                <h2 style="font-size: 24px; margin-bottom: 10px;">Update Room Details</h2>
+                <form action="/rooms/update/<%= room._id %>" method="post" style="display: grid; gap: 20px;">
+                    <div style="display: grid; gap: 5px;">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" value="<%= room.title %>" style="padding: 5px;">
+                    </div>
+                    <div div style="display: grid; gap: 5px;">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" style="padding: 5px;"><%= room.description %></textarea>
+                    </div>
+                    <div style="display: grid; gap: 5px;">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" value="<%= room.address %>" style="padding: 5px;">
+                    </div>
+                    <div style="display: grid; gap: 5px;">
+                        <label for="rent">Rent:</label>
+                        <input type="number" id="rent" name="rent" value="<%= room.rent %>" style="padding: 5px;">
+                    </div>
+                    <button type="submit" style="padding: 5px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Update</button>
+                </form>
+
+                <form action="/rooms/delete/<%= room._id %>" method="post" style="margin-top: 10px; display: flex; justify-content: center;">
+                    <button type="submit" style="padding: 5px; background-color: #dc3545; color: #fff; border: none; cursor: pointer;">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</main>
+<%- include('partials/footer') %>
